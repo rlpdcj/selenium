@@ -1,0 +1,26 @@
+#Exemplo da https://www.youtube.com/watch?v=MlzCElmtrxQ
+#Já que no google não funfou eu mudei para o bing 
+from selenium import webdriver
+
+class Bing:
+    def __init__(self,driver):
+        self.driver = driver
+        self.url = 'https://www.bing.com/?cc=br'
+        self.search_bar = 'sb_form_q'
+        self.btn_search = 'sb_form_go'
+        self.btn_lucky = 'btnI'
+
+    def navigate(self):
+        self.driver.get(self.url)
+
+    def search(self, word='None'):
+        self.driver.find_element_by_id(
+            self.search_bar).send_keys(word)
+        self.driver.find_element_by_id(
+            self.btn_search).click()
+        
+
+ff = webdriver.Firefox()
+g = Bing(ff)
+g.navigate()
+g.search('Live de Python')
